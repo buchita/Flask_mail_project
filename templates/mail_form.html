@@ -1,16 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Mail Form</title>
-</head>
-<body>
-     <form action = "http://localhost:5000/mail" method = "POST">
-         <p>Heading  <input type = "text" name = "heading" /></p>
-         <p>Recipient <input type = "text" name = "recipient" /></p>
-         <p>Message <input type ="text" name = "message" /></p>
-         <p><input type = "submit" value = "Send" /></p>
-      </form>
+{#<!DOCTYPE html>#}
+{#<html lang="en">#}
+{#<head>#}
+{#    <meta charset="UTF-8">#}
+{#    <title>Mail Form</title>#}
+{#</head>#}
+{#<body>#}
+{#     <form action = "http://localhost:5000/mail" method = "POST">#}
+{#         <p>Heading  <input type = "text" name = "heading" /></p>#}
+{#         <p>Recipient <input type = "text" name = "recipient" /></p>#}
+{#         <p>Message <input type ="text" name = "message" /></p>#}
+{#         <p><input type = "submit" value = "Send" /></p>#}
+{#      </form>#}
+{##}
+{#</body>#}
+{#</html>#}
 
-</body>
+<!doctype html>
+<html lang="en">
+    <head>
+        {% block head %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://getbootstrap.com/docs/3.4/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        {% block styles %}
+            <link rel="stylesheet" href="{{url_for('.static', filename='main_css.css')}}">
+        {% endblock %}
+
+        <title>Mail Form</title>
+        {% endblock %}
+    </head>
+    <body>
+        {% block content %}
+
+            <div class="container-fluid">
+
+            <div class="container">
+                  <div class="jumbotron text-center">
+                      <h1>Flask Mailing Application</h1>
+                  </div>
+            <form action="http://localhost:5000/mail" method="POST">
+                 <div class="mb-3">
+                    <label for="heading" class="form-label">Heading</label>
+                    <input id="heading" type = "text" name="heading">
+                </div>
+                <div class="mb-3">
+                    <label for="receiver" class="form-label">Recipient</label>
+                    <input type="email" class="form-control" id="receiver" name="recipient" placeholder="name@example.com">
+                </div>
+
+                <div class="mb-3">
+                  <label for="message" class="form-label">Body Message</label>
+                  <textarea class="form-control" id="message" name="message" rows="3"></textarea>
+                </div>
+
+                <div class="mb-3">
+                     <input type="submit" value="Send">
+                </div>
+
+            </form>
+
+            </div>
+
+        </div>
+
+
+{#            <form action = "http://localhost:5000/mail" method = "POST">#}
+{#                 <p>Heading  <input type = "text" name = "heading" /></p>#}
+{#                 <p>Recipient <input type = "text" name = "recipient" /></p>#}
+{#                 <p>Message <input type ="text" name = "message" /></p>#}
+{#                 <p><input type = "submit" value = "Send" /></p>#}
+{#            </form>#}
+
+
+        {% endblock %}
+
+    </body>
 </html>
